@@ -216,6 +216,7 @@ template {
 }
 .mini-tag:hover {
   background: #000;
+  color:#FFF !important;
 }
 .mini-tag:hover a {
   color: #FFF !important;
@@ -325,8 +326,124 @@ hr {
   color: #FFF;
 }
 
+a { text-decoration:none;}
+
 a:focus {
   border: 2px dotted currentColor;
+}
+
+h3 {
+  font-size: 20px;
+}
+@media (min-width: 900px) {
+  h3 {
+    font-size: 23px;
+  }
+}
+
+.airplane {
+  position: relative;
+  width: 80px;
+  height: 54px;
+  background: url("airplane.png") no-repeat;
+  background-size: 100% 100%;
+  animation: plane 1.5s ease-in-out infinite;
+}
+
+.airplane::after {
+  content: "";
+  width: 5px;
+  height: 1px;
+  background: #222;
+  position: absolute;
+  top: 22.5px;
+  right: -5px;
+}
+
+.airplane .motor {
+  height: 35px;
+  position: absolute;
+  right: -7px;
+  top: 5.25px;
+  width: 5px;
+  z-index: 1;
+  animation: motor 0.3s linear infinite;
+}
+
+.airplane .motor:after,
+.airplane .motor:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 100%;
+  height: 50%;
+  background: #5d68f9;
+  border-radius: 100%;
+  z-index: 1;
+}
+
+.airplane .motor:before {
+  top: auto;
+  bottom: 0;
+}
+
+.plane-loading {
+  margin: 50px auto;
+  width: 100px;
+}
+
+.plane-loading .clouds {
+  position: relative;
+  width: 100px;
+}
+
+.plane-loading .clouds i {
+  display: block;
+  background: url("cloud.png") no-repeat;
+  background-size: 100%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: -20px;
+  animation: clouds 4s ease infinite;
+}
+
+.plane-loading .clouds i:last-of-type {
+  top: -50px;
+  animation-delay: 1.5s;
+  opacity: 0;
+}
+
+@keyframes motor {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(360deg);
+  }
+}
+@keyframes plane {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(20px) rotateX(15deg);
+  }
+}
+@keyframes clouds {
+  0% {
+    right: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    right: 100%;
+    opacity: 0;
+  }
 }
 
 /* Inputs Helpers */
@@ -340,6 +457,11 @@ a:focus {
 .input-row textarea {
   flex-grow: 1;
   margin: 10px 5px;
+}
+
+.input-row > * {
+  flex-grow: 1;
+  margin: 10px 5px !important;
 }
 
 button,
@@ -364,6 +486,141 @@ input[type=reset],
   text-decoration: none;
 }
 
+.sort-bar {
+  box-shadow: 0 0 10px #E1E1E1;
+  background: #FFF;
+  display: flex;
+  border-radius: 10px;
+  margin: 10px auto;
+}
+
+.sort-bar button {
+  background: none;
+  color: #000;
+  border: none;
+  width: auto;
+  padding: 8px 16px;
+  margin: 5px;
+  border-radius: 50px;
+}
+
+.sort-bar .active {
+  background: #617af1;
+  color: #FFF;
+}
+
+#flights-list {
+  list-style: none;
+  padding: 0;
+}
+#flights-list li a {
+  padding: 10px;
+  border: 2px solid #d9d9d9;
+  background: #FFF;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #d9d9d9;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#flights-list .input-group {
+  width: auto;
+}
+
+#flights-info {
+  list-style: none;
+  padding: 0;
+  clear: both;
+  font-size: 22px;
+}
+
+.select-window {
+  list-style: none;
+  padding: 0;
+}
+.select-window li {
+  border-bottom: 2px solid #CCC;
+  padding: 25px;
+  cursor: pointer;
+}
+.select-window li i {
+  float: right;
+}
+
+.date-window {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-size: 22px;
+}
+
+.window-list {
+  list-style: none;
+  padding: 0;
+}
+.window-list li {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #f1f1f1;
+  padding: 20px 0;
+  cursor: pointer;
+}
+.window-list .airport-code {
+  margin: 0 19px;
+  background: #EEE;
+  padding: 10px;
+  border-radius: 10px;
+}
+.window-list .add-airport {
+  padding: 10px;
+  background: #b9dab9;
+  color: #7ab97a;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+#flights-info i {
+  color: #888;
+  margin: 0 10px;
+}
+#flights-info > li {
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #d5d5d5;
+  background: #FFF;
+}
+#flights-info > li > * {
+  margin: 15px 0;
+}
+#flights-info time {
+  display: block;
+  color: #f52221;
+  margin: 10px 0;
+}
+#flights-info #info {
+  list-style: none;
+  padding-left: 15px;
+  position: relative;
+}
+#flights-info #info:before {
+  height: 100%;
+  width: 3px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #e5e5e5;
+  content: "";
+}
+
+button i,
+input[type=button] i,
+input[type=submit] i,
+input[type=reset] i,
+.button i {
+  margin: 0 10px;
+}
+
 .btn-primary {
   background: var(--kaw-primary) !important;
   border-color: var(--kaw-primary);
@@ -385,6 +642,11 @@ input[type=reset],
   background: linear-gradient(#FFF, #DDD);
   border-color: #FFF;
   color: #000 !important;
+}
+
+.btn-green {
+  background: #28a745;
+  color: #FFF !important;
 }
 
 .rounded {
@@ -723,11 +985,38 @@ img {
 }
 
 table {
+  width: 100%;
   border-collapse: collapse;
-  max-width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 10px 0;
 }
+table.data-table td:last-of-type {
+  text-align: right;
+}
+table.data-table td:first-of-type {
+  text-align: left;
+}
+table.data-table i {
+  margin: 0 15px;
+  font-size: 22px;
+  color: #666;
+}
+tr {
+  border-top: 4px solid #f1f2f6;
+  box-shadow: 0 0 5px #DDD;
+  background: #FFF;
+}
+tr:first-of-type {
+  border-radius: 10px 10px 0 0;
+  border: none;
+}
+tr:last-of-type {
+  border-radius: 0 0 10px 10px;
+}
+
 td, th {
-  border: 1px solid #AAA;
+  border: none;
   padding: 20px;
   text-align: center;
 }
@@ -735,6 +1024,10 @@ td, th {
 thead, th {
   background: #030a0f;
   color: #fff;
+}
+
+tfoot {
+  color: #444;
 }
 
 tfoot {
@@ -1353,7 +1646,8 @@ aside#post-sidebar a:hover {
   padding-bottom: 150px !important;
 }
 
-#main-header a.button { width:auto !important;}
+#main-header a.button { width:auto !important;transition:all 0.3s ease;}
+#main-header a.button:hover { background:#FFF;color:#000 !important;}
 
 #main-header #site-identity a {
   display: flex;
@@ -1373,6 +1667,10 @@ aside#post-sidebar a:hover {
 }
 #main-container > header {
   text-align: center;
+}
+
+#main-container.gray-container {
+  background: #f1f2f6;
 }
 
 #pagination {

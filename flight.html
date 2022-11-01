@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Kawenter</title>
+		<link rel = 'stylesheet' href = 'style.css' />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+		<meta charset = 'utf-8' />
+		<meta name = 'viewport' content = 'width=device-width,initial-scale=1.0' />
+	</head>
+<body class="home blog wp-custom-logo">
+						<div id="loading" style="width: 100%; height: 100%; top: 0px; left: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; z-index: 9999999; display: none;">
+				<div class="kawenter-loading">
+					<i></i>
+					<i></i>
+					<i></i>
+				</div>
+			</div>
+			<script>document.getElementById("loading").style.display='flex';</script>
+			
+		<header id="main-header">
+		
+			<section id="site-identity">
+				
+				<a href="home.html">
+			
+					<img src="mini-logo.png" class="attachment-thumbnail size-thumbnail" alt="" loading="lazy"  width="150" height="150">						
+					<h1 id="site-title">
+						Kawenter					</h1>
+					
+				</a>
+			
+			</section>
+		
+			<section id="header-menu" class="requireJs" toggle-effect="none">
+				<div id="upper-nav" class="menu-upper-menu-container"><ul id="menu-upper-menu" class="menu">
+				<li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+<li><a href="#"><i class="fas fa-clipboard-list"></i>Orders</a></li>
+<li><a href="faq-list.html"><i class="fas fa-sticky-note"></i>Blog</a></li>
+<li><a href="#"><i class="fas fa-headset"></i>Contact</a></li>
+</ul></div>	
+		<a class="button btn-white" title="Sign In">
+			Login		</a>
+				</section>
+		
+		</header>
+</header>
+
+<section id="main-container" class="special-container">
+		
+		
+<header id="page-header">
+	<h2>
+		Flights	</h2>
+</header>
+<hr>
+
+<section id="page-content">
+	<form method="GET" action="flights-list.php" style="max-width:800px;margin:auto;">
+
+	<div class="input radio-input bw-open-window" bw-window="trip-type-window">
+		<i class="fas fa-map-signs"></i>
+		<div class="input-group">
+			<label for="flight-type">
+				One way-trip / Round trip			</label>
+			<span>
+				One way-trip
+			</span>
+		</div>
+		<input type="hidden" name="flight-type">
+	</div>
+	
+	<br>
+	
+	<!-- Depature Airport ( Search ) -->
+	<div class="input special-search bw-open-window" bw-window="airport-window">
+		<i class="far fa-circle"></i>
+		<span>
+			Depature Airport		</span>
+		<input type="hidden" name="depature-airport" value="">
+	</div>
+	
+	<!-- Arrival Airport -->
+	<div class="input special-search bw-open-window" bw-window="airport-window">
+		<i class="fas fa-map-marker-alt"></i>
+		<span>
+			Arrival Airport		</span>
+		<input type="hidden" name="arrival-airport" value="">
+	</div>
+	
+	<br>
+	
+	<section class="input-row">
+	
+		<div class="input input-date bw-open-window" bw-window="date-window">
+			<i class="far fa-calendar"></i>
+			<div class="input-group">
+				<label for="depature-date">
+					Depature Date				</label>
+				<span style="margin:5px;">
+					YYYY/MM/dd
+				</span>
+				<input type="hidden" name="depature-date">
+				<noscript>
+					<input
+						type 	= 'date'
+						name 	= 'depature-date'
+						id 		= 'depature-date' />
+				</noscript>
+			</div>
+		</div>
+		
+		<!-- Only In ( Round Trip ) -->
+		<div class="input input-date bw-open-window" bw-window="date-window">
+			<i class="far fa-calendar"></i>
+			<div class="input-group">
+				<label for="arrival-date">
+					Arrival Date				</label>
+				<span style="margin:5px;">
+					YYYY/MM/dd
+				</span>
+				<input type="hidden" name="arrival-date">
+				<noscript>
+					<input
+						type 	= 'date'
+						name 	= 'arrival-date'
+						id 		= 'arrival-date' />
+				</noscript>
+			</div>
+		</div>
+	
+	</section>
+	
+	<br>
+	
+	<div class="input bw-open-window" bw-window="persons-and-cabin-class">
+		<i class="fas fa-users"></i>
+		<div class="input-group">
+			<label>
+				Travelers and cabin class			</label>
+			<span>
+				1 Person - Business class
+			</span>
+		</div>
+	</div>
+	
+	<button type="submit" class="btn-primary">
+		Search	</button>
+
+</form>
+
+<!-- Airports Window ( Search ) -->
+<section class="bw-window" id="airport-window">
+	<header class="bw-window-header">
+		<button class="bw-close-window">
+			<i class="fas fa-times"></i>
+		</button>
+		<h3>
+			Choose Airport		</h3>
+	</header>
+	<section class="bw-window-content">
+		
+		<div class="input search-input">
+			<input type="search" id="airport-search" placeholder="Search...">
+		</div>
+		
+		<ul id="airports-list" class="window-list">
+			<li>
+				<span class="airport-code">
+					CAI
+				</span>
+				<div class="input-group">
+					<strong>
+						Cairo International Airport
+					</strong>
+					<span>
+						Egypt
+					</span>
+				</div>
+				<span class="add-airport">
+					<i class="fas fa-plus"></i>
+				</span>
+			</li>
+		</ul>
+		
+	</section>
+</section>
+
+<!-- Date Window -->
+<section class="bw-window" id="date-window">
+	<header class="bw-window-header">
+		<button class="bw-close-window">
+			<i class="fas fa-times"></i>
+		</button>
+		<h3>
+			Choose a Date		</h3>
+	</header>
+	<section class="bw-window-content date-window">	
+		<div class="date-year">
+			
+			<button type="button" id="bw-year-plus" class="btn-no-bg">
+				<i class="fas fa-chevron-up fa-2x"></i>
+			</button>
+			
+			<span id="bw-year">1999</span>
+			
+			<button type="button" id="bw-year-minus" class="btn-no-bg">
+				<i class="fas fa-chevron-down fa-2x"></i>
+			</button>
+		</div>
+		
+		<div class="date-month">
+			<button type="button" id="bw-month-plus" class="btn-no-bg">
+				<i class="fas fa-chevron-up fa-2x"></i>
+			</button>
+			
+			<span id="bw-month">October</span>
+			
+			<button type="button" id="bw-month-minus" class="btn-no-bg">
+				<i class="fas fa-chevron-down fa-2x"></i>
+			</button>		
+		</div>
+		
+		<div class="date-day">
+			<button type="button" id="bw-day-plus" class="btn-no-bg">
+				<i class="fas fa-chevron-up fa-2x"></i>
+			</button>
+			
+			<span id="bw-day">31</span>
+			
+			<button type="button" id="bw-day-minus" class="btn-no-bg">
+				<i class="fas fa-chevron-down fa-2x"></i>
+			</button>		
+		</div>
+		
+	</section>
+	<footer class="bw-window-footer">
+		
+		<button class="bw-close-window" type="button">
+			Done		</button>
+		
+		<button class="bw-close-window" type="button">
+			Cancel		</button>
+		
+	</footer>
+</section>
+
+<!-- Round Trip / One-way Trip -->
+<section class="bw-window" id="trip-type-window">
+	<header class="bw-window-header">
+		<button class="bw-close-window">
+			<i class="fas fa-times"></i>
+		</button>
+		<h3>
+			Flight Type		</h3>
+	</header>
+	<section class="bw-window-content">
+		<ul class="select-window">
+			<li bw-value="one-way-trip">
+				<span>
+					One-way trip				</span>
+				<i class="fas fa-check"></i>
+			</li>
+			<li bw-value="round-trip">
+				<span>
+					Round Trip				</span>
+			</li>
+		</ul>
+	</section>
+</section>
+
+<!-- Persons and Cabin Class Window -->
+<section class="bw-window" id="persons-and-cabin-class">
+	<header class="bw-window-header">
+		<button class="bw-close-window">
+			<i class="fas fa-times"></i>
+		</button>
+		<h3>
+			Travelers		</h3>
+	</header>
+	
+	<section class="bw-window-content">
+		
+		<div class="input number-input">
+			<i class="fas fa-user"></i>
+			<div class="identity">
+				<label for="adults">
+					Adults				</label>
+				<span class="extra-info">
+					12 Years old and above				</span>
+			</div>
+			
+			<div class="controls">	
+				<button type="button">
+					-
+				</button>
+			
+				<input type="number" name="adults" id="adults" min="1" value="1" max="10">
+					
+				<button type="button">
+					+
+				</button>
+			</div>
+		</div>
+		
+		<div class="input number-input">
+			<i class="fas fa-user"></i>
+			<div class="identity">
+				<label for="children">
+					Children				</label>
+				<span class="extra-info">
+					2 to 12 years old				</span>
+			</div>
+			
+			<div class="controls">	
+				<button type="button">-</button>
+			
+				<input type="number" name="children" id="children" min="0" value="0" max="10">
+					
+				<button type="button">+</button>
+			</div>
+		</div>
+		
+		<div class="input number-input">
+			<i class="fas fa-user"></i>
+			<div class="identity">
+				<label for="infants">
+					Infants				</label>
+				<span class="extra-info">
+					Less than 2 years				</span>
+			</div>
+			
+			<div class="controls">	
+				<button type="button">-</button>
+			
+				<input type="number" name="infants" id="infants" min="0" value="0" max="10">
+					
+				<button type="button">+</button>
+			</div>
+		</div>
+		
+		<div class="input select-input">
+			<i class="fas fa-trophy"></i>
+			<div class="input-group">
+				<label for="cabin-class">
+					Cabin class				</label>
+				<select name="cabin-class" id="cabin-class">
+								
+					<option value="economy">
+						Economy Class					</option>
+				
+								
+					<option value="business">
+						Business Class					</option>
+				
+								
+					<option value="first">
+						First Class					</option>
+				
+								</select>
+			</div>
+		</div>
+		
+	</section>
+	
+	<footer class="bw-window-footer">
+		<button type="button" class="bw-close-window">
+			Done		</button>
+		
+		<button type="button" class="bw-close-window">
+			Cancel		</button>
+	</footer>
+</section>
+
+</section>
+
+		</section>
+		
+		<footer id="main-footer">
+			<section id="footer-widgets">
+<div id="footer-widget-1"><img src="https://kawenter.com/blog/wp-content/uploads/2021/11/Group-3.png" class="image wp-image-83  attachment-medium size-medium" alt="" loading="lazy" style="max-width: 100%; height: auto;" width="300" height="134">		
+		<ul class="menu-e-mails">
+				
+			<li>
+								
+					<span aria-label="E-mail Address">
+						info@kawenter.com					</span>
+							</li>
+		
+				</ul>
+		
+				
+		<ul class="menu-social">
+				
+			<li>
+								<a title="Visit On facebook" href="https://www.facebook.com/profile" target="_blank"></a>
+				
+							</li>
+		
+				
+			<li>
+								<a title="Visit On twitter" href="https://www.twitter.com/loay" target="_blank"></a>
+				
+							</li>
+		
+				</ul>
+		
+		</div>
+				
+				
+				<div id="footer-widget-2"><h2 class="widgettitle">Services</h2>
+<div class="menu-services-container"><ul id="menu-services" class="menu"><li id="menu-item-58" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-58"><a href="#">Main</a></li>
+<li id="menu-item-59" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-59"><a href="#">Follow Order</a></li>
+<li id="menu-item-60" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-60"><a href="faq-list.html">FAQ</a></li>
+<li id="menu-item-61" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-61"><a href="#">Blog</a></li>
+<li id="menu-item-62" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62"><a href="#">Contact Us</a></li>
+</ul></div></div><div id="footer-widget-3"><h2 class="widgettitle">Company</h2>
+<div class="menu-company-container"><ul id="menu-company" class="menu"><li id="menu-item-64" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64"><a href="#">Main</a></li>
+<li id="menu-item-65" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-65"><a href="#">Follow Order</a></li>
+<li id="menu-item-66" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66"><a href="faq-list.html">FAQ</a></li>
+<li id="menu-item-67" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-67"><a href="#">Blog</a></li>
+<li id="menu-item-68" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68"><a href="#">Contact Us</a></li>
+</ul></div></div><div id="footer-widget-4"><h2 class="widgettitle">Follow Us</h2>
+<div class="menu-follow-us-container"><ul id="menu-follow-us" class="menu"><li id="menu-item-69" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-69"><a href="#">Facebook</a></li>
+<li id="menu-item-70" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-70"><a href="#">Twitter</a></li>
+<li id="menu-item-71" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71"><a href="#">Instagram</a></li>
+<li id="menu-item-72" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-72"><a href="#">LinkedIn</a></li>
+<li id="menu-item-73" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-73"><a href="#">Medium</a></li>
+</ul></div></div><div id="footer-widget-5"><h2 class="widgettitle">Legal Resources</h2>
+<div class="menu-legal-resources-container"><ul id="menu-legal-resources" class="menu"><li id="menu-item-74" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74"><a href="#">Privacy Policy</a></li>
+<li id="menu-item-75" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75"><a href="#">Rights and Conditions</a></li>
+</ul></div></div>			</section>
+			
+			<p id="rights-text">All Rights Reserved 2022</p>
+			<script src = 'jquery.min.js'></script>
+			<script src = 'plugin.js'></script>
+		</footer>
+	</body>
+</html>

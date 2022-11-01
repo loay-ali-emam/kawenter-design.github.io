@@ -22,6 +22,12 @@ window.onload = () => {
 		$(window).addClass('active')
 	});
 	
+	$('.sort-bar button').click((ele) => {
+		
+		$('.sort-bar .active').removeClass('active');
+		$(ele.currentTarget).addClass('active');
+	});
+	
 	//List Of Visas.
 	setTimeout(() => {
 		
@@ -29,6 +35,10 @@ window.onload = () => {
 		
 		//Show Sample Data.
 		$("#list-of-visas #visas-results").show();
+		
+		$(".plane-loading").hide();
+		
+		$("#flights-list").show();
 		
 	},1500);
 	
